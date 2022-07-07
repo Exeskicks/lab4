@@ -35,6 +35,14 @@ public class TestBattleship {
          Assert.assertTrue(battleshipr.clearscreen());
      }
 
-   
+    @Test
+    void battleMakeTurnTest(){
+        Battleship battleshipr = new Battleship();
+        String playerName = "";
+        int[][] monitor = new int[10][10];
+        int[][] battlefield = new int[10][10];
+        Assert.assertTrue(battleshipr.makeTurn(playerName,monitor,battlefield));
+
+    }
 
 }
