@@ -7,4 +7,14 @@ public class TestBattleship {
         Battleship battleshipr = new Battleship();
         Assert.assertNotNull(battleshipr);
     }
+
+    @Test
+    void battleDrawFieldTest() {
+        Battleship battleshipr = new Battleship();
+        int[][] battlefield = new int[10][10];
+        int actual = 10;
+        int expected = battleshipr.drawField(battlefield);
+
+        Assert.assertEquals(actual, expected);
+    }
 }
