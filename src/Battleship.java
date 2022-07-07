@@ -23,4 +23,8 @@ public class Battleship {
         return i;
     }
 
+    public boolean available(int x, int y, int deck, int rotation, int[][] battlefield) {
+        //todo реализовать метод available позднее до конца
+        return true;
+    }
 }
