@@ -165,6 +165,9 @@ public class Battleship {
     }
 
 
-
+    public boolean wincondition(int[][] monitor1, int[][] monitor2, String playerName1, String playerName2) {
+        //todo реализовать метод wincondition позднее до конца
+        return true;
+    }
 
 }
