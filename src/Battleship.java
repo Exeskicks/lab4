@@ -1,7 +1,15 @@
 import java.io.IOException;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Battleship {
     public Battleship() {}
+
+
+
+
+
+
 
 
     public static int drawField(int[][] battlefield) {
@@ -21,7 +29,7 @@ public class Battleship {
         return i;
     }
 
-    public boolean available(int x, int y, int deck, int rotation, int[][] battlefield) {
+    public static boolean available(int x, int y, int deck, int rotation, int[][] battlefield) {
         if (rotation == 1) {
             if (y + deck > battlefield.length) {
                 return false;
@@ -70,7 +78,7 @@ public class Battleship {
     }
 
 
-    public boolean clearscreen() {
+    public static boolean clearscreen() {
         try {
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             return true;

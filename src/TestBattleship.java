@@ -34,4 +34,10 @@ public class TestBattleship {
          Battleship battleshipr = new Battleship();
          Assert.assertTrue(battleshipr.clearscreen());
      }
+
+     @Test
+    void battlePlaceShipsTest(){
+         Battleship battleshipr = new Battleship();
+         Assert.assertTrue(battleshipr.placeships());
+     }
 }
