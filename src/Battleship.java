@@ -87,4 +87,9 @@ public class Battleship {
             return false;
         }
     }
+
+    public boolean placeships() {
+        //todo реализовать метод placeships позднее до конца
+        return true;
+    }
 }
