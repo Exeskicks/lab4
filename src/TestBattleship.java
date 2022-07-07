@@ -17,4 +17,15 @@ public class TestBattleship {
 
         Assert.assertEquals(actual, expected);
     }
+
+    @Test
+    void battleAvailable(){
+        Battleship battleshipr = new Battleship();
+        int x = 0;
+        int y = 0;
+        int deck = 4;
+        int rotation = 1;
+        int[][] battlefield = new int[10][10];
+        Assert.assertTrue(battleshipr.available(x,y,deck,rotation,battlefield));
+    }
 }
