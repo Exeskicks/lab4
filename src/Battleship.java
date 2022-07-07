@@ -87,7 +87,7 @@ public class Battleship {
         }
     }
 
-    public void placeships(String playerName, int[][] battlefield) {
+    public static void placeships(String playerName, int[][] battlefield) {
         Scanner scanner = new Scanner(System.in);
         int deck = 4;
         while (deck >= 1) {
@@ -123,8 +123,8 @@ public class Battleship {
     }
 
 
-    public boolean makeTurn(String playerName, int[][] monitor, int[][] battlefield) {
-        //Scanner scanner = new Scanner(System.in);
+    public static boolean makeTurn(String playerName, int[][] monitor, int[][] battlefield) {
+        Scanner scanner = new Scanner(System.in);
         try {
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             while (true) {
@@ -144,9 +144,9 @@ public class Battleship {
                     System.out.println();
                 }
                 System.out.println("Please enter OX coordinate:");
-                int x = 1;
+                int x = scanner.nextInt();
                 System.out.println("Please enter OY coordinate:");
-                int y = 1;
+                int y = scanner.nextInt();
                 if (battlefield[x][y] == 1) {
                     System.out.println("Hit! Make your turn again!");
                     monitor[x][y] = 2;
@@ -163,4 +163,8 @@ public class Battleship {
             return false;
         }
     }
+
+
+
+
 }
