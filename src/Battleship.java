@@ -70,5 +70,8 @@ public class Battleship {
     }
 
 
-
+    public boolean clearscreen() {
+        ////todo реализовать метод clearscreen позднее до конца
+        return true;
+    }
 }
