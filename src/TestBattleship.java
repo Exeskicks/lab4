@@ -35,9 +35,6 @@ public class TestBattleship {
          Assert.assertTrue(battleshipr.clearscreen());
      }
 
-     @Test
-    void battlePlaceShipsTest(){
-         Battleship battleshipr = new Battleship();
-         Assert.assertTrue(battleshipr.placeships());
-     }
+   
+
 }

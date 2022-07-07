@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Battleship {
@@ -88,8 +87,38 @@ public class Battleship {
         }
     }
 
-    public boolean placeships() {
-        //todo реализовать метод placeships позднее до конца
-        return true;
+    public void placeships(String playerName, int[][] battlefield) {
+        Scanner scanner = new Scanner(System.in);
+        int deck = 4;
+        while (deck >= 1) {
+            System.out.println();
+            System.out.println(playerName + ", please place your " + deck + "-deck ship on the battlefield:");
+            System.out.println();
+
+            drawField(battlefield);
+
+            System.out.println("Please enter OX coordinate:");
+            int x = scanner.nextInt();
+            System.out.println("Please enter OY coordinate:");
+            int y = scanner.nextInt();
+            System.out.println("Choose direction:");
+            System.out.println("1. Vertical.");
+            System.out.println("2. Horizontal.");
+            int direction = scanner.nextInt();
+            if (!available(x, y, deck, direction, battlefield)){
+                System.out.println("Wrong coordinates!");
+                continue;
+            }
+            for (int i = 0; i < deck; i++) {
+                if (direction == 1) {
+                    battlefield[x][y + i] = 1;
+                } else {
+                    battlefield[x + i][y] = 1;
+                }
+            }
+            deck--;
+            clearscreen();
+        }
+
     }
 }
