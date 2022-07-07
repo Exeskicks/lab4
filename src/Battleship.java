@@ -5,7 +5,33 @@ public class Battleship {
     public Battleship() {}
 
 
+    static String playerName1 = "Player#1";
+    static String playerName2 = "Player#2";
+    static Scanner scanner = new Scanner(System.in);
+    static int[][] battlefield1 = new int[10][10];
+    static int[][] battlefield2 = new int[10][10];
+    static int[][] monitor1 = new int[10][10];
+    static int[][] monitor2 = new int[10][10];
 
+    public static void main(String[] args) {
+        System.out.println("Игрок№1, пожалуйста, введите свое имя:");
+        playerName1 = scanner.nextLine();
+        System.out.println("Игрок№2, пожалуйста, введите свое имя::");
+        playerName2 = scanner.nextLine();
+        placeships(playerName1, battlefield1);
+        placeships(playerName2, battlefield2);
+        while (true) {
+            makeTurn(playerName1, monitor1, battlefield2);
+            if (wincondition()) {
+                break;
+            }
+            makeTurn(playerName2, monitor2, battlefield1);
+            if (wincondition()) {
+                break;
+            }
+        }
+
+    }
 
 
 
@@ -92,21 +118,21 @@ public class Battleship {
         int deck = 4;
         while (deck >= 1) {
             System.out.println();
-            System.out.println(playerName + ", please place your " + deck + "-deck ship on the battlefield:");
+            System.out.println(playerName + ", пожалуйста, разместите свой " + deck + "-палубный корабль на поле боя:");
             System.out.println();
 
             drawField(battlefield);
 
-            System.out.println("Please enter OX coordinate:");
+            System.out.println("Пожалуйста, введите координаты OX:");
             int x = scanner.nextInt();
-            System.out.println("Please enter OY coordinate:");
+            System.out.println("Пожалуйста, введите координаты OY:");
             int y = scanner.nextInt();
-            System.out.println("Choose direction:");
-            System.out.println("1. Vertical.");
-            System.out.println("2. Horizontal.");
+            System.out.println("Выберите направление:");
+            System.out.println("1. Вертикальный.");
+            System.out.println("2. Горизонтальный.");
             int direction = scanner.nextInt();
             if (!available(x, y, deck, direction, battlefield)){
-                System.out.println("Wrong coordinates!");
+                System.out.println("Неверные координаты!");
                 continue;
             }
             for (int i = 0; i < deck; i++) {
@@ -128,7 +154,7 @@ public class Battleship {
         try {
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             while (true) {
-                System.out.println(playerName + ", please, make your turn.");
+                System.out.println(playerName + ", пожалуйста, сделайте свой ход.");
                 System.out.println("  0 1 2 3 4 5 6 7 8 9");
                 for (int i = 0; i < monitor.length; i++) {
                     System.out.print(i + " ");
@@ -143,15 +169,15 @@ public class Battleship {
                     }
                     System.out.println();
                 }
-                System.out.println("Please enter OX coordinate:");
+                System.out.println("Пожалуйста, введите координаты OX:");
                 int x = scanner.nextInt();
-                System.out.println("Please enter OY coordinate:");
+                System.out.println("Пожалуйста, введите координаты OY:");
                 int y = scanner.nextInt();
                 if (battlefield[x][y] == 1) {
-                    System.out.println("Hit! Make your turn again!");
+                    System.out.println("Попал! Сделай свой ход снова!");
                     monitor[x][y] = 2;
                 } else {
-                    System.out.println("Miss! Your opponents turn!");
+                    System.out.println("Промах! Вашь противник ходит!");
                     monitor[x][y] = 1;
                     break;
                 }
@@ -165,9 +191,34 @@ public class Battleship {
     }
 
 
-    public boolean wincondition(int[][] monitor1, int[][] monitor2, String playerName1, String playerName2) {
-        //todo реализовать метод wincondition позднее до конца
-        return true;
+    public static boolean wincondition() {
+        int counter1 = 0;
+        for (int i = 0; i < monitor1.length; i++) {
+            for (int j = 0; j < monitor1[i].length; j++) {
+                if (monitor1[i][j] == 2) {
+                    counter1++;
+                }
+            }
+        }
+
+        int counter2 = 0;
+        for (int i = 0; i < monitor2.length; i++) {
+            for (int j = 0; j < monitor2[i].length; j++) {
+                if (monitor2[i][j] == 2) {
+                    counter2++;
+                }
+            }
+        }
+
+        if (counter1 >= 10) {
+            System.out.println(playerName1 + " Победа!!!");
+            return true;
+        }
+        if (counter2 >= 10) {
+            System.out.println(playerName2 + " Победа!!!");
+            return true;
+        }
+        return false;
     }
 
 }

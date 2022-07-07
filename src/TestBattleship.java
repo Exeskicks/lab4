@@ -47,12 +47,8 @@ public class TestBattleship {
 
     @Test
     void battleWinConditionTest(){
-        int[][] monitor1 = new int[10][10];
-        int[][] monitor2 = new int[10][10];
-        String playerName1 = "";
-        String playerName2 = "";
         Battleship battleshipr = new Battleship();
-        Assert.assertTrue(battleshipr.wincondition(monitor1,monitor2,playerName1,playerName2));
+        Assert.assertTrue(battleshipr.wincondition());
 
     }
 }
