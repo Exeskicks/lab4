@@ -123,5 +123,8 @@ public class Battleship {
     }
 
 
-
+    public boolean makeTurn(String playerName, int[][] monitor, int[][] battlefield) {
+        //todo реализовать метод makeTurn позднее до конца
+        return true;
+    }
 }
