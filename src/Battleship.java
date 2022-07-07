@@ -124,7 +124,43 @@ public class Battleship {
 
 
     public boolean makeTurn(String playerName, int[][] monitor, int[][] battlefield) {
-        //todo реализовать метод makeTurn позднее до конца
-        return true;
+        //Scanner scanner = new Scanner(System.in);
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            while (true) {
+                System.out.println(playerName + ", please, make your turn.");
+                System.out.println("  0 1 2 3 4 5 6 7 8 9");
+                for (int i = 0; i < monitor.length; i++) {
+                    System.out.print(i + " ");
+                    for (int j = 0; j < monitor[1].length; j++) {
+                        if (monitor[j][i] == 0) {
+                            System.out.print("- ");
+                        } else if (monitor[j][i] == 1) {
+                            System.out.print(". ");
+                        } else {
+                            System.out.print("X ");
+                        }
+                    }
+                    System.out.println();
+                }
+                System.out.println("Please enter OX coordinate:");
+                int x = 1;
+                System.out.println("Please enter OY coordinate:");
+                int y = 1;
+                if (battlefield[x][y] == 1) {
+                    System.out.println("Hit! Make your turn again!");
+                    monitor[x][y] = 2;
+                } else {
+                    System.out.println("Miss! Your opponents turn!");
+                    monitor[x][y] = 1;
+                    break;
+                }
+                clearscreen();
+            }
+            return true;
+        } catch (InterruptedException | IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
