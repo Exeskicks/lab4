@@ -71,7 +71,12 @@ public class Battleship {
 
 
     public boolean clearscreen() {
-        ////todo реализовать метод clearscreen позднее до конца
-        return true;
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            return true;
+        } catch (InterruptedException | IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
