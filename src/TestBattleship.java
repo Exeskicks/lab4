@@ -19,7 +19,7 @@ public class TestBattleship {
     }
 
     @Test
-    void battleAvailable(){
+    void battleAvailableTest(){
         Battleship battleshipr = new Battleship();
         int x = 0;
         int y = 0;
@@ -28,4 +28,10 @@ public class TestBattleship {
         int[][] battlefield = new int[10][10];
         Assert.assertTrue(battleshipr.available(x,y,deck,rotation,battlefield));
     }
+
+     @Test
+     void battleClearScreenTest(){
+         Battleship battleshipr = new Battleship();
+         Assert.assertTrue(battleshipr.clearscreen());
+     }
 }

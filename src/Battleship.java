@@ -1,6 +1,4 @@
-import java.util.Random;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Battleship {
     public Battleship() {}
@@ -70,5 +68,7 @@ public class Battleship {
         }
         return true;
     }
-    }
+
+
+
 }
